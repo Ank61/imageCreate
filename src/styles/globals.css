@@ -1,3 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,500;1,500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+
+.Editor_editor__Jz9sW textarea.Editor_textarea__OxM_Z {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: vertical;
+    height: 60px;
+
+}
+
+
+.hljs-keyword {
+    color: var(--syntax-keyword);
+    caret-color: white;
+}
+
+.hljs-attributes{
+    color: var(--syntax-attribute);
+    caret-color: white;
+} 
+
+.hljs-functions {
+    color: var(--syntax-property);
+    caret-color: white;
+}
+.hljs-tags {
+    color: var(--syntax-tag);
+    caret-color: white;
+}
+
+.Editor_editor__Jz9sW {
+    font-family: "JetBrains Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 15px;
+    font-variant-ligatures: none;
+    font-weight: 500;
+    letter-spacing: .1px;
+    white-space: pre-wrap;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template: 1fr/1fr;
+    --editor-padding: 16px 16px 21px 16px;
+    --syntax-text: #FFFFFF;
+    --syntax-background: rgba(0, 0, 0, 0.75);
+    --syntax-string: #DFD473;
+    --syntax-comment: #807796;
+    --syntax-variable: #73DFA5;
+    --syntax-variable-2: #FFFFFF;
+    --syntax-variable-3: #E08569;
+    --syntax-number: #7A7FFD;
+    --syntax-atom: #7A7FFD;
+    --syntax-keyword: #FF659C;
+    --syntax-property: #1AC8FF;
+    --syntax-definition: #73DFA5;
+    --syntax-meta: #F1ECFE;
+    --syntax-operator: #FF659C;
+    --syntax-attribute: #73DFA5;
+    --syntax-tag: #FF659C;
+    position: relative;
+}
+
+.Editor_editor__Jz9sW {
+    padding: var(--editor-padding);
+    color: var(--syntax-text);
+    background-color: var(--syntax-background);
+    border-radius: 5px;
+    overflow: hidden !important;
+    height: 100px;
+    position: relative;
+}
+
+pre.Editor_formatted__x4nkp.hljs {
+    position: absolute !important;
+    top: 15px;
+    width: 360px !important;
+    white-space: pre-line; /* Break text on newline characters */
+    word-break: break-all !important;
+    height: fit-content;
+    z-index: 2;
+    font-family: "JetBrains Mono", monospace;
+    caret-color: white;
+}
+textarea {
+    width: fit-content;
+    top : 15px;
+    min-height: 100px;
+    color: transparent !important;
+    background-color: #000;
+    caret-color: white;
+    position: absolute !important;
+    overflow-y: hidden;
+    resize: none;
+    border: none !important;
+    outline: none !important;
+}
+
+/* .asp{
+    width: calc(100vw - 20px) *0.5625;
+} */
