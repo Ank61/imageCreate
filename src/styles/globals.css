@@ -88,22 +88,23 @@ pre.Editor_formatted__x4nkp.hljs {
     white-space: pre-line; /* Break text on newline characters */
     word-break: break-all !important;
     height: fit-content;
-    z-index: 2;
     font-family: "JetBrains Mono", monospace;
     caret-color: white;
+    color: white;
 }
 textarea {
-    width: fit-content;
+    width: 100%;
     top : 15px;
     min-height: 100px;
     color: transparent !important;
-    background-color: #000;
+    background-color: transparent;
     caret-color: white;
     position: absolute !important;
     overflow-y: hidden;
     resize: none;
     border: none !important;
     outline: none !important;
+    z-index: 2;
 }
 
 /* .asp{
