@@ -3,9 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 .Editor_editor__Jz9sW textarea.Editor_textarea__OxM_Z {
     width: 100%;
     border: 1px solid #ccc;
@@ -13,9 +10,7 @@
     box-sizing: border-box;
     resize: vertical;
     height: 60px;
-
 }
-
 
 .hljs-keyword {
     color: var(--syntax-keyword);
@@ -31,6 +26,7 @@
     color: var(--syntax-property);
     caret-color: white;
 }
+
 .hljs-tags {
     color: var(--syntax-tag);
     caret-color: white;
@@ -52,7 +48,7 @@
     grid-template: 1fr/1fr;
     --editor-padding: 16px 16px 21px 16px;
     --syntax-text: #FFFFFF;
-    --syntax-background: rgba(0, 0, 0, 0.75);
+    /* --syntax-background: rgba(0, 0, 0, 0.75); */
     --syntax-string: #DFD473;
     --syntax-comment: #807796;
     --syntax-variable: #73DFA5;
@@ -71,28 +67,16 @@
 }
 
 .Editor_editor__Jz9sW {
-    /* padding: var(--editor-padding); */
     color: var(--syntax-text);
-    background-color: var(--syntax-background);
     border-radius: 5px;
     overflow: hidden !important;
     height: 100px;
     position: relative;
-    
 }
 
 pre.Editor_formatted__x4nkp.hljs {
-    /* position: absolute !important;
-    height: auto;
-    min-height: 100px;
-    width: 360px !important;
-    white-space: pre-line;
-    word-break: break-all !important;
-    height: fit-content;
-    font-family: "JetBrains Mono", monospace; */
     caret-color: white;
     color: white !important;
-
     padding: 16px 16px 21px 16px !important;
     margin: 0 !important;
     counter-increment: step 0;
@@ -106,23 +90,12 @@ pre.Editor_formatted__x4nkp.hljs {
     line-height: 22.5px;
     -moz-tab-size: 2;
     -o-tab-size: 2;
+    background: transparent !important;
     tab-size: 2;
     white-space: pre-wrap;
 }
+
 textarea {
-    /* width: 100%;
-    min-height: 100px;
-    color: transparent !important;
-    background-color: transparent;
-    caret-color: white;
-    position: absolute !important;
-    overflow-y: hidden;
-    white-space: pre-line;
-    word-break: break-all !important;
-    resize: none;
-    border: none !important;
-    outline: none !important;
-    z-index: 2; */
     z-index: 2;
     overflow: hidden;
     border: none;
@@ -174,7 +147,7 @@ textarea {
 .dashboard_items{
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 4px;
 }
 .dashboard_heading{
     color: #959595;

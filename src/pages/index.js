@@ -4,8 +4,6 @@ import { toPng } from "html-to-image";
 
 export default function Home() {
   const elementRef = useRef(null);
-  const textHeight = useRef(null);
-  const divHeight = useRef(null);
   const [data, setData] = useState({
     javascript: {
       keywords: [
@@ -361,15 +359,11 @@ export default function Home() {
       ],
     },
   });
-
+  const preRef = useRef(null);
   const [inputText, setInputText] = useState("");
-  const [dynamicHeight, setDynamicHeight] = useState(0);
-  const [dynamicWidth, setDynamicwidth] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState(
     "linear-gradient(140deg, rgb(255, 99, 99), rgb(115, 52, 52))"
   );
-  const [allTest, setTest] = useState("");
-  const preRef = useRef(null);
 
   const htmlToImageConvert = () => {
     toPng(elementRef.current, { cacheBust: false })
@@ -385,7 +379,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const regex =/(\s+|=)/g;
+    const regex = /(\s+|=)/g;
     console.log("Input ", inputText.split(" "));
     autoResize();
   }, [inputText]);
@@ -420,12 +414,13 @@ export default function Home() {
     return (
       <pre
         className="Editor_formatted__x4nkp hljs"
+        style={{ backgroundColor: "rgba(0,0,0,.75)" }}
         ref={preRef}
         dangerouslySetInnerHTML={{ __html: highlightedText }}
-      ></pre>
+      />
     );
   };
-  
+
   function autoResize() {
     const textarea2 = document.getElementById("myTextarea2");
     textarea2.style.height = "auto";
@@ -458,9 +453,12 @@ export default function Home() {
           backgroundImage: `${backgroundColor}`,
         }}
       >
-        <div className="bg-black min-w-max h-content min-h-28 rounded-xl px-2">
-          <div className="w-38 h-full	pt-4 font-medium text-white flex justify-center">
-            <div className="w-1/3 flex px-4">
+        <div
+          className=" min-w-max h-content min-h-28 rounded-xl px-2"
+          style={{ backgroundColor: "rgba(0,0,0,.75)" }}
+        >
+          <div className="w-38 h-full	pt-4 font-medium text-white flex">
+            <div className="w-1/3 flex pl-2 pr-2">
               <div className="w-3 h-3 bg-red-500 rounded-lg mr-1.5"></div>
               <div className="w-3 h-3 bg-yellow-500 rounded-lg mr-1.5"></div>
               <div className="w-3 h-3 bg-green-500 rounded-lg mr-1.5"></div>
@@ -473,7 +471,10 @@ export default function Home() {
               untitled-1
             </div>
           </div>
-          <div id="myTextarea2" className="Editor_editor__Jz9sW ">
+          <div
+            id="myTextarea2"
+            className="Editor_editor__Jz9sW"
+          >
             <textarea
               id="myTextarea"
               onInput={() => autoResize()}
@@ -503,17 +504,15 @@ export default function Home() {
           >
             <option
               value="Purple"
-              
               style={{ backgroundColor: "#191919", color: "#959595" }}
             >
               Purple
             </option>
             <option
-            selected
+              selected
               value="Crimson"
               style={{ backgroundColor: "#191919", color: "#959595" }}
             >
-              
               Crimson
             </option>
             <option
@@ -559,12 +558,20 @@ export default function Home() {
         </div>
         <div className="dashboard_items">
           <strong className="dashboard_heading">Language</strong>
-          <div className="mt-2">
-            <strong className="text-white text-lg" style={{ color: "#8f8f8f" }}>
+          <div className="mt-1">
+            <span className="font-medium" style={{ color: "#fb8d8d" }}>
               Javascript
-            </strong>
+            </span>
           </div>
         </div>
+        {/* <div className="dashboard_items">
+          <button
+            onClick={() => formatData()}
+            className="bg-red-400 w-28 text-sm p-2 rounded-lg"
+          >
+            Format Code
+          </button>
+        </div> */}
         <div className="dashboard_items">
           <button
             onClick={htmlToImageConvert}
