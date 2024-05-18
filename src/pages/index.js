@@ -86,6 +86,137 @@ export default function Home() {
         "navigator",
         "localStorage",
         "sessionStorage",
+        "accept-charset",
+        "accesskey",
+        "action",
+        "align",
+        "allow",
+        "alt",
+        "async",
+        "autocapitalize",
+        "autocomplete",
+        "autofocus",
+        "autoplay",
+        "background",
+        "bgcolor",
+        "border",
+        "buffered",
+        "challenge",
+        "charset",
+        "checked",
+        "cite",
+        "class",
+        "code",
+        "codebase",
+        "color",
+        "cols",
+        "colspan",
+        "content",
+        "contenteditable",
+        "contextmenu",
+        "controls",
+        "coords",
+        "crossorigin",
+        "csp",
+        "data-*",
+        "datetime",
+        "decoding",
+        "default",
+        "defer",
+        "dir",
+        "dirname",
+        "disabled",
+        "download",
+        "draggable",
+        "dropzone",
+        "enctype",
+        "for",
+        "form",
+        "formaction",
+        "formenctype",
+        "formmethod",
+        "formnovalidate",
+        "formtarget",
+        "headers",
+        "height",
+        "hidden",
+        "high",
+        "href",
+        "hreflang",
+        "http-equiv",
+        "icon",
+        "id",
+        "importance",
+        "integrity",
+        "intrinsicsize",
+        "inputmode",
+        "ismap",
+        "itemid",
+        "itemprop",
+        "itemref",
+        "itemscope",
+        "itemtype",
+        "kind",
+        "label",
+        "lang",
+        "language",
+        "loading",
+        "list",
+        "loop",
+        "low",
+        "manifest",
+        "max",
+        "maxlength",
+        "minlength",
+        "media",
+        "method",
+        "min",
+        "multiple",
+        "muted",
+        "name",
+        "novalidate",
+        "open",
+        "optimum",
+        "pattern",
+        "ping",
+        "placeholder",
+        "poster",
+        "preload",
+        "radiogroup",
+        "readonly",
+        "referrerpolicy",
+        "rel",
+        "required",
+        "reversed",
+        "rows",
+        "rowspan",
+        "sandbox",
+        "scope",
+        "scoped",
+        "selected",
+        "shape",
+        "size",
+        "sizes",
+        "slot",
+        "span",
+        "spellcheck",
+        "src",
+        "srcdoc",
+        "srclang",
+        "srcset",
+        "start",
+        "step",
+        "style",
+        "summary",
+        "tabindex",
+        "target",
+        "title",
+        "translate",
+        "type",
+        "usemap",
+        "value",
+        "width",
+        "wrap",
         "history",
         "XMLHttpRequest",
         "fetch",
@@ -237,11 +368,8 @@ export default function Home() {
   const [backgroundColor, setBackgroundColor] = useState(
     "linear-gradient(140deg, rgb(255, 99, 99), rgb(115, 52, 52))"
   );
+  const [allTest, setTest] = useState("");
   const preRef = useRef(null);
-
-  useEffect(() => {
-    console.log("Input ", inputText);
-  }, [inputText]);
 
   const htmlToImageConvert = () => {
     toPng(elementRef.current, { cacheBust: false })
@@ -255,39 +383,50 @@ export default function Home() {
         console.log(err);
       });
   };
-  const inputWords = inputText.split(" ");
+
+  useEffect(() => {
+    const regex =/(\s+|=)/g;
+    console.log("Input ", inputText.split(" "));
+    autoResize();
+  }, [inputText]);
+
+  const escapeHtml = (unsafe) => {
+    return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  };
 
   const formatTextarea = () => {
+    // const regex =/(\s+|=)/g;
     const highlightedText = inputText
       .split(" ")
       .map((word) => {
         if (data.javascript.keywords.includes(word)) {
-          return `<span classNameName="hljs-keyword">${word}</span>`;
-        } else if (data.javascript.attributes.includes(word)) {
-          return `<span classNameName="hljs-keyword">${word}</span>`;
+          return `<span class="hljs-keyword">${escapeHtml(word)}</span>`;
+        } else if (data.javascript.attributes.includes(word.toLowerCase())) {
+          return `<span class="hljs-attributes">${escapeHtml(word)}</span>`;
         } else if (data.javascript.functions.includes(word)) {
-          return `<span className="hljs-functions">${word}</span>`;
+          return `<span class="hljs-functions">${escapeHtml(word)}</span>`;
         } else if (data.javascript.tags.includes(word)) {
-          return `<span className="hljs-tags">${word}</span>`;
+          return `<span class="hljs-tags">${escapeHtml(word)}</span>`;
         } else {
-          return `<span className="hljs">${word}</span>`;
+          return `<span class="hljs">${escapeHtml(word)}</span>`;
         }
       })
       .join(" ");
-
     return (
       <pre
-        className="Editor_formatted__x4nkp hljs "
+        className="Editor_formatted__x4nkp hljs"
         ref={preRef}
         dangerouslySetInnerHTML={{ __html: highlightedText }}
-      />
+      ></pre>
     );
   };
-
+  
   function autoResize() {
-    const textarea = document.getElementById("myTextarea");
-    textarea.style.height = "auto";
-    textarea.style.height = textarea.scrollHeight + "px";
     const textarea2 = document.getElementById("myTextarea2");
     textarea2.style.height = "auto";
     textarea2.style.height = textarea2.scrollHeight + "px";
@@ -299,13 +438,11 @@ export default function Home() {
       setBackgroundColor(
         "linear-gradient(140deg, rgb(255, 99, 99), rgb(115, 52, 52))"
       );
-    }
-    else if(value ==="Purple"){
+    } else if (value === "Purple") {
       setBackgroundColor(
         "linear-gradient(140deg, rgb(165, 142, 251), rgb(233, 191, 248))"
       );
-    }
-    else{
+    } else {
       setBackgroundColor(
         "linear-gradient(140deg, rgb(142, 199, 251), rgb(28, 85, 170))"
       );
@@ -366,15 +503,17 @@ export default function Home() {
           >
             <option
               value="Purple"
-              selected
+              
               style={{ backgroundColor: "#191919", color: "#959595" }}
             >
               Purple
             </option>
             <option
+            selected
               value="Crimson"
               style={{ backgroundColor: "#191919", color: "#959595" }}
             >
+              
               Crimson
             </option>
             <option
