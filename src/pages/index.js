@@ -13,7 +13,7 @@ export default function Home() {
         "break",
         "case",
         "catch",
-        "class",
+        "className",
         "const",
         "continue",
         "debugger",
@@ -234,7 +234,14 @@ export default function Home() {
   const [inputText, setInputText] = useState("");
   const [dynamicHeight, setDynamicHeight] = useState(0);
   const [dynamicWidth, setDynamicwidth] = useState(0);
+  const [backgroundColor, setBackgroundColor] = useState(
+    "linear-gradient(140deg, rgb(255, 99, 99), rgb(115, 52, 52))"
+  );
   const preRef = useRef(null);
+
+  useEffect(() => {
+    console.log("Input ", inputText);
+  }, [inputText]);
 
   const htmlToImageConvert = () => {
     toPng(elementRef.current, { cacheBust: false })
@@ -250,24 +257,14 @@ export default function Home() {
   };
   const inputWords = inputText.split(" ");
 
-  // useEffect(() => {
-  //   if (preRef.current) {
-  //     const preHeight = preRef.current.getBoundingClientRect().height;
-  //     divHeight.current.style.height = preHeight * 1.1;
-  //     textHeight.current.style.height = preHeight * 1.1;
-  //     setDynamicHeight(preHeight * 1.1);
-  //   }
-  //   console.log("ASDFAsD", JSON.stringify(inputText));
-  // }, [inputText]);
-
   const formatTextarea = () => {
     const highlightedText = inputText
-      .split(' ')
+      .split(" ")
       .map((word) => {
         if (data.javascript.keywords.includes(word)) {
-          return `<span className="hljs-keyword">${word}</span>`;
+          return `<span classNameName="hljs-keyword">${word}</span>`;
         } else if (data.javascript.attributes.includes(word)) {
-          return `<span className="hljs-keyword">${word}</span>`;
+          return `<span classNameName="hljs-keyword">${word}</span>`;
         } else if (data.javascript.functions.includes(word)) {
           return `<span className="hljs-functions">${word}</span>`;
         } else if (data.javascript.tags.includes(word)) {
@@ -276,7 +273,7 @@ export default function Home() {
           return `<span className="hljs">${word}</span>`;
         }
       })
-      .join(' ');
+      .join(" ");
 
     return (
       <pre
@@ -286,7 +283,7 @@ export default function Home() {
       />
     );
   };
-  
+
   function autoResize() {
     const textarea = document.getElementById("myTextarea");
     textarea.style.height = "auto";
@@ -296,12 +293,37 @@ export default function Home() {
     textarea2.style.height = textarea2.scrollHeight + "px";
   }
 
+  const handleColor = (event) => {
+    const { value } = event.target;
+    if (value === "Crimson") {
+      setBackgroundColor(
+        "linear-gradient(140deg, rgb(255, 99, 99), rgb(115, 52, 52))"
+      );
+    }
+    else if(value ==="Purple"){
+      setBackgroundColor(
+        "linear-gradient(140deg, rgb(165, 142, 251), rgb(233, 191, 248))"
+      );
+    }
+    else{
+      setBackgroundColor(
+        "linear-gradient(140deg, rgb(142, 199, 251), rgb(28, 85, 170))"
+      );
+    }
+  };
+
   return (
     <div className="flex justify-center items-center mx-auto min-h-screen bg-black">
-      <div ref={elementRef} className="p-20 bg-slate-200 ">
-        <div className="bg-black min-w-max h-content min-h-28 rounded-xl px-5">
-          <div className="w-38 h-full	pt-4 font-medium text-white flex justify-center  ">
-            <div className="w-1/3 flex">
+      <div
+        ref={elementRef}
+        className="p-20 bg-slate-200"
+        style={{
+          backgroundImage: `${backgroundColor}`,
+        }}
+      >
+        <div className="bg-black min-w-max h-content min-h-28 rounded-xl px-2">
+          <div className="w-38 h-full	pt-4 font-medium text-white flex justify-center">
+            <div className="w-1/3 flex px-4">
               <div className="w-3 h-3 bg-red-500 rounded-lg mr-1.5"></div>
               <div className="w-3 h-3 bg-yellow-500 rounded-lg mr-1.5"></div>
               <div className="w-3 h-3 bg-green-500 rounded-lg mr-1.5"></div>
@@ -314,10 +336,7 @@ export default function Home() {
               untitled-1
             </div>
           </div>
-          <div
-             id="myTextarea2"
-            className="Editor_editor__Jz9sW "
-          >
+          <div id="myTextarea2" className="Editor_editor__Jz9sW ">
             <textarea
               id="myTextarea"
               onInput={() => autoResize()}
@@ -332,9 +351,90 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <button onClick={htmlToImageConvert} className="bg-red-400">
-        Download Image
-      </button>
+
+      <div className="dashboard">
+        <div className="dashboard_items">
+          <strong className="dashboard_heading">Theme</strong>
+          <select
+            style={{
+              backgroundColor: "#191919",
+              color: "#959595",
+              border: " 1px solid #959595",
+            }}
+            onChange={handleColor}
+            className="block bg-black w-26 p-1  outline-none text-sm text-gray-900 border border-gray-300 rounded-lg  focus:ring-blue-500  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option
+              value="Purple"
+              selected
+              style={{ backgroundColor: "#191919", color: "#959595" }}
+            >
+              Purple
+            </option>
+            <option
+              value="Crimson"
+              style={{ backgroundColor: "#191919", color: "#959595" }}
+            >
+              Crimson
+            </option>
+            <option
+              value="Blue"
+              style={{ backgroundColor: "#191919", color: "#959595" }}
+            >
+              Blue
+            </option>
+          </select>
+        </div>
+        <div className="dashboard_items">
+          <strong className="dashboard_heading">Background</strong>
+          <label className="inline-flex items-center cursor-pointer mt-2">
+            <input
+              type="checkbox"
+              value=""
+              className="sr-only peer outline-none"
+            />
+            <div className="relative w-9 h-5 outline-none bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+          </label>
+        </div>
+        <div className="dashboard_items">
+          <strong class="dashboard_heading">Dark mode</strong>
+          <label className="inline-flex items-center cursor-pointer outline-none mt-2">
+            <input
+              type="checkbox"
+              value=""
+              className="sr-only peer outline-none"
+            />
+            <div className="relative w-9 h-5 outline-none bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+          </label>
+        </div>
+        <div className="dashboard_items">
+          <strong className="dashboard_heading">Padding</strong>
+          <div className=" mt-2">
+            <div className="flex text-sm " style={{ color: "#959595" }}>
+              <button className="mr-2">16</button>
+              <button className="mr-2">32</button>
+              <button className="mr-2">64</button>
+              <button className="mr-2">128</button>
+            </div>
+          </div>
+        </div>
+        <div className="dashboard_items">
+          <strong className="dashboard_heading">Language</strong>
+          <div className="mt-2">
+            <strong className="text-white text-lg" style={{ color: "#8f8f8f" }}>
+              Javascript
+            </strong>
+          </div>
+        </div>
+        <div className="dashboard_items">
+          <button
+            onClick={htmlToImageConvert}
+            className="bg-red-400 w-20 text-sm p-2 rounded-lg"
+          >
+            Save PNG
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

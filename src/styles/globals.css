@@ -8,7 +8,6 @@
 
 .Editor_editor__Jz9sW textarea.Editor_textarea__OxM_Z {
     width: 100%;
-    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
@@ -72,41 +71,138 @@
 }
 
 .Editor_editor__Jz9sW {
-    padding: var(--editor-padding);
+    /* padding: var(--editor-padding); */
     color: var(--syntax-text);
     background-color: var(--syntax-background);
     border-radius: 5px;
     overflow: hidden !important;
     height: 100px;
     position: relative;
+    
 }
 
 pre.Editor_formatted__x4nkp.hljs {
-    position: absolute !important;
-    top: 15px;
+    /* position: absolute !important;
+    height: auto;
+    min-height: 100px;
     width: 360px !important;
-    white-space: pre-line; /* Break text on newline characters */
+    white-space: pre-line;
     word-break: break-all !important;
     height: fit-content;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", monospace; */
     caret-color: white;
-    color: white;
+    color: white !important;
+
+    padding: 16px 16px 21px 16px !important;
+    margin: 0 !important;
+    counter-increment: step 0;
+    counter-reset: step;
+    font-family: inherit;
+    font-size: 15px;
+    font-variant-ligatures: none;
+    font-weight: 500;
+    grid-area: 1 / 1 / 2 / 2;
+    letter-spacing: .1px;
+    line-height: 22.5px;
+    -moz-tab-size: 2;
+    -o-tab-size: 2;
+    tab-size: 2;
+    white-space: pre-wrap;
 }
 textarea {
-    width: 100%;
-    top : 15px;
+    /* width: 100%;
     min-height: 100px;
     color: transparent !important;
     background-color: transparent;
     caret-color: white;
     position: absolute !important;
     overflow-y: hidden;
+    white-space: pre-line;
+    word-break: break-all !important;
     resize: none;
     border: none !important;
     outline: none !important;
+    z-index: 2; */
     z-index: 2;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+    caret-color: var(--ray-foreground);
+    resize: none;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+    padding: var(--editor-padding);
+    margin: 0;
+    counter-increment: step 0;
+    counter-reset: step;
+    font-family: inherit;
+    font-size: 15px;
+    font-variant-ligatures: none;
+    font-weight: 500;
+    grid-area: 1 / 1 / 2 / 2;
+    letter-spacing: .1px;
+    border: none !important;
+    outline: none !important;
+    line-height: 22.5px;
+    -moz-tab-size: 2;
+    -o-tab-size: 2;
+    tab-size: 2;
+    white-space: pre-wrap;
 }
 
 /* .asp{
     width: calc(100vw - 20px) *0.5625;
 } */
+
+.dashboard{
+    position: fixed;
+    z-index: 5;
+    bottom: 50px;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    border: 1px solid hsla(0, 0%, 100%, .2);
+    border-radius: 8px;
+    background: #191919 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .6);
+    gap: 32px;
+    transform: translateX(-50%);
+}
+.dashboard_items{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.dashboard_heading{
+    color: #959595;
+    cursor: default;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1px;
+    line-height: 14px;
+    white-space: nowrap;
+}
+.buttonSelect{
+    display: flex;
+    overflow: hidden;
+    height: 24px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px;
+    border: 1px solid hsla(0, 0%, 100%, .1);
+    border-radius: 6px;
+    background: transparent;
+    box-shadow: none;
+    color: hsla(0, 0%, 100%, .8);
+    cursor: default;
+    font-size: 13px;
+    font-weight: 500;
+    gap: 12px;
+    letter-spacing: .1px;
+    line-height: 16px;
+    outline: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
