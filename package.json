@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "highlight.js": "^11.9.0",
     "html-to-image": "^1.11.11",
     "js-beautify": "^1.15.1",
     "next": "14.2.2",

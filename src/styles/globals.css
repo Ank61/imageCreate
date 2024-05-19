@@ -12,19 +12,81 @@
     height: 60px;
 }
 
+.crimsonTheme{
+    --ray-foreground: #FEFDFD;
+    --ray-token-constant: #D15510;
+    --ray-token-string: #EBB99D;
+    --ray-token-comment: #895E60;
+    --ray-token-keyword: #EB6F6F;
+    --ray-token-parameter: #C88E8E;
+    --ray-token-function: #C88E8E;
+    --ray-token-string-expression: #EBB99D;
+    --ray-token-punctuation: #EB6F6F;
+    --ray-token-link: #EB6F6F;
+    --ray-token-number: #FDA97A;
+    --ray-token-property: #D15510;
+}
+
+.blueTheme{
+    --ray-foreground: #E4F2FF;
+    --ray-token-constant: #008BB7;
+    --ray-token-string: #9DD8EB;
+    --ray-token-comment: #6C808B;
+    --ray-token-keyword: #2ED9FF;
+    --ray-token-parameter: #1AD6B5;
+    --ray-token-function: #1AD6B5;
+    --ray-token-string-expression: #9DD8EB;
+    --ray-token-punctuation: #2ED9FF;
+    --ray-token-link: #2ED9FF;
+    --ray-token-number: #9984EE;
+    --ray-token-property: #008BB7;
+}
+
+.purpleTheme{
+    --ray-foreground: #FFFFFF;
+    --ray-token-constant: #1AC8FF;
+    --ray-token-string: #DFD473;
+    --ray-token-comment: #807796;
+    --ray-token-keyword: #FF659C;
+    --ray-token-parameter: #1AC8FF;
+    --ray-token-function: #73DFA5;
+    --ray-token-string-expression: #DFD473;
+    --ray-token-punctuation: #FF659C;
+    --ray-token-link: #FF659C;
+    --ray-token-number: #7A7FFD;
+    --ray-token-property: #1AC8FF;
+}
+
 .hljs-keyword {
     color: var(--syntax-keyword);
     caret-color: white;
 }
 
-.hljs-attributes{
-    color: var(--syntax-attribute);
+.hljs-attr {
+    color: var(--ray-token-string-expression);
     caret-color: white;
-} 
+}
 
-.hljs-functions {
-    color: var(--syntax-property);
+.hljs-function {
+    color: var(--ray-token-property);
     caret-color: white;
+}
+
+.hljs-name {
+    color: var(--syntax-name);
+    caret-color: white;
+}
+.hljs-rest{
+    color: var(--ray-token-function) !important;
+}
+
+.hljs-string {
+    color: var(--ray-token-string);
+    caret-color: white;
+}
+
+.hljs-title{
+    color : var(--ray-token-constant)
 }
 
 .hljs-tags {
@@ -48,7 +110,6 @@
     grid-template: 1fr/1fr;
     --editor-padding: 16px 16px 21px 16px;
     --syntax-text: #FFFFFF;
-    /* --syntax-background: rgba(0, 0, 0, 0.75); */
     --syntax-string: #DFD473;
     --syntax-comment: #807796;
     --syntax-variable: #73DFA5;
@@ -63,8 +124,10 @@
     --syntax-operator: #FF659C;
     --syntax-attribute: #73DFA5;
     --syntax-tag: #FF659C;
+    --syntax-name: #ebb99d;
     position: relative;
 }
+
 
 .Editor_editor__Jz9sW {
     color: var(--syntax-text);
@@ -76,7 +139,6 @@
 
 pre.Editor_formatted__x4nkp.hljs {
     caret-color: white;
-    color: white !important;
     padding: 16px 16px 21px 16px !important;
     margin: 0 !important;
     counter-increment: step 0;
@@ -93,6 +155,19 @@ pre.Editor_formatted__x4nkp.hljs {
     background: transparent !important;
     tab-size: 2;
     white-space: pre-wrap;
+    --editor-padding: 16px 16px 21px 16px;
+    /* --ray-foreground: #FEFDFD;
+    --ray-token-constant: #D15510;
+    --ray-token-string: #EBB99D;
+    --ray-token-comment: #895E60;
+    --ray-token-keyword: #EB6F6F;
+    --ray-token-parameter: #C88E8E;
+    --ray-token-function: #C88E8E;
+    --ray-token-string-expression: #EBB99D;
+    --ray-token-punctuation: #EB6F6F;
+    --ray-token-link: #EB6F6F;
+    --ray-token-number: #FDA97A;
+    --ray-token-property: #D15510; */
 }
 
 textarea {
@@ -125,11 +200,8 @@ textarea {
     white-space: pre-wrap;
 }
 
-/* .asp{
-    width: calc(100vw - 20px) *0.5625;
-} */
 
-.dashboard{
+.dashboard {
     position: fixed;
     z-index: 5;
     bottom: 50px;
@@ -144,12 +216,14 @@ textarea {
     gap: 32px;
     transform: translateX(-50%);
 }
-.dashboard_items{
+
+.dashboard_items {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
-.dashboard_heading{
+
+.dashboard_heading {
     color: #959595;
     cursor: default;
     font-size: 11px;
@@ -158,7 +232,8 @@ textarea {
     line-height: 14px;
     white-space: nowrap;
 }
-.buttonSelect{
+
+.buttonSelect {
     display: flex;
     overflow: hidden;
     height: 24px;
